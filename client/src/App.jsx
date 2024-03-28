@@ -14,7 +14,7 @@ function App() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/users");
+      const response = await axios.get(`${window.location.origin}/api/users`); 
       setUsers(response.data);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -26,7 +26,7 @@ function App() {
     try {
       const newUser = { name, email, age };
       const response = await axios.post(
-        "http://localhost:5000/api/users",
+        `${window.location.origin}/api/users`,
         newUser
       );
       setUsers([...users, response.data]);
@@ -43,7 +43,7 @@ function App() {
     try {
       const updatedUser = { name, email, age };
       const response = await axios.put(
-        `http://localhost:5000/api/users/${id}`,
+        `${window.location.origin}/api/users/${id}`,
         updatedUser
       );
       const updatedUsers = users.map((user) =>
@@ -58,7 +58,7 @@ function App() {
 
   const handleDeleteUser = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/users/${id}`);
+      await axios.delete(`${window.location.origin}/api/users/${id}`);
       setUsers(users.filter((user) => user._id !== id));
     } catch (error) {
       console.error("Error deleting user:", error);
