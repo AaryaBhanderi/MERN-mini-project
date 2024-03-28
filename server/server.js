@@ -2,16 +2,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-const port = 5000;
 const dbConnect = require("./config/dbconnect");
 const User = require("./model/User");
-
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// calling fucntion to connect with db
+// calling function to connect with db
 dbConnect();
 
 // CRUD operations
@@ -63,7 +61,5 @@ app.delete("/api/users/:id", async (req, res) => {
   }
 });
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+module.exports = app; // Export the app instance
+
