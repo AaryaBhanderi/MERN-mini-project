@@ -2,15 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "server/server.js",
+      "src": "*.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
-    { "handle": "filesystem" },
+    // {
+    //   "src": "/router/bookRouter.js",
+    //   "dest": "/router/bookRouter.js"
+    // },
     {
-      "src": "/api/(.*)",
-      "dest": "server/server.js"
+      "src": "/(.*)",
+      "dest": "/"
     }
   ]
 }
